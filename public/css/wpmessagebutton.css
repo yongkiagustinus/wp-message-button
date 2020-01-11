@@ -1,0 +1,469 @@
+.wpmessagebutton {
+	position: fixed;
+	bottom: 20px;
+}
+
+.wpmessagebutton_chat {
+	position: relative;
+	width: 380px;
+	margin-bottom: 30px;
+	background: #F7F7F7;
+	display: none;
+}
+
+.wpmessagebutton_chat::before {
+	content: "";
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	right: 30px;
+	bottom: -9px;
+	transform: rotate(45deg);
+	background: #fff;
+}
+
+.wpmessagebutton_chat__header {
+	padding: 30px 40px 80px;
+}
+
+.wpmessagebutton_chat__header__title {
+	font-size: 1.7em;
+	margin-bottom: 20px;
+}
+
+.wpmessagebutton_chat__header__content {
+	font-size: 1.1em;
+	line-height: 1.6;
+	opacity: 0.7;
+}
+
+.wpmessagebutton_chat__body {
+	padding: 20px;
+}
+
+.wpmessagebutton_chat__body__agents {
+	position: relative;
+	margin-top: -80px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 60vh;
+}
+
+.wpmessagebutton_chat__footer {
+	padding: 15px 40px;
+	background: #fff;
+	border-top: 1px solid #e7e7e7;
+	color: #92A2C8;
+	text-align: center;
+}
+
+.wpmessagebutton_chat__agent {
+	display: flex;
+	background: #fff;
+	padding: 10px 20px;
+	border-bottom: 1px solid rgb(238, 238, 238);
+	align-items: center;
+	text-decoration: none;
+}
+
+.wpmessagebutton_chat__agent:focus {
+	outline: none;
+}
+
+/* Agent Photo */
+.wpmessagebutton_chat__agent__photo {
+	position: relative;
+}
+
+.wpmessagebutton_chat__agent__photo img {
+	display: block;
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+}
+
+/* Indicator */
+.wpmessagebutton_chat__agent__photo:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 15px;
+	height: 15px;
+	background-size: contain;
+	background-color: #fff;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-radius: 50px;
+}
+
+.wpmessagebutton_chat__agent--fb .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6IzFFODhFNTsiIGQ9Ik0yNTYsMEMxMTQuNjI0LDAsMCwxMDYuMTEyLDAsMjM3LjAyNGMwLDc0LjU5MiwzNy4yMTYsMTQxLjEyLDk1LjM5MiwxODQuNTc2VjUxMmw4Ny4xNjgtNDcuODQNCgljMjMuMjY0LDYuNDMyLDQ3LjkwNCw5LjkyLDczLjQ0LDkuOTJjMTQxLjM3NiwwLDI1Ni0xMDYuMTEyLDI1Ni0yMzcuMDI0QzUxMiwxMDYuMTEyLDM5Ny4zNzYsMCwyNTYsMHoiLz4NCjxwb2x5Z29uIHN0eWxlPSJmaWxsOiNGQUZBRkE7IiBwb2ludHM9IjI4MS40NCwzMTkuMiAyMTYuMjU2LDI0OS42NjQgODkuMDU2LDMxOS4yIDIyOC45NiwxNzAuNjU2IDI5NS43NDQsMjQwLjE5MiA0MjEuMzc2LDE3MC42NTYgDQoJIi8+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==");
+}
+
+.wpmessagebutton_chat__agent--wa .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6IzRDQUY1MDsiIGQ9Ik0yNTYuMDY0LDBoLTAuMTI4bDAsMEMxMTQuNzg0LDAsMCwxMTQuODE2LDAsMjU2YzAsNTYsMTguMDQ4LDEwNy45MDQsNDguNzM2LDE1MC4wNDhsLTMxLjkwNCw5NS4xMDQNCglsOTguNC0zMS40NTZDMTU1LjcxMiw0OTYuNTEyLDIwNCw1MTIsMjU2LjA2NCw1MTJDMzk3LjIxNiw1MTIsNTEyLDM5Ny4xNTIsNTEyLDI1NlMzOTcuMjE2LDAsMjU2LjA2NCwweiIvPg0KPHBhdGggc3R5bGU9ImZpbGw6I0ZBRkFGQTsiIGQ9Ik00MDUuMDI0LDM2MS41MDRjLTYuMTc2LDE3LjQ0LTMwLjY4OCwzMS45MDQtNTAuMjQsMzYuMTI4Yy0xMy4zNzYsMi44NDgtMzAuODQ4LDUuMTItODkuNjY0LTE5LjI2NA0KCUMxODkuODg4LDM0Ny4yLDE0MS40NCwyNzAuNzUyLDEzNy42NjQsMjY1Ljc5MmMtMy42MTYtNC45Ni0zMC40LTQwLjQ4LTMwLjQtNzcuMjE2czE4LjY1Ni01NC42MjQsMjYuMTc2LTYyLjMwNA0KCWM2LjE3Ni02LjMwNCwxNi4zODQtOS4xODQsMjYuMTc2LTkuMTg0YzMuMTY4LDAsNi4wMTYsMC4xNiw4LjU3NiwwLjI4OGM3LjUyLDAuMzIsMTEuMjk2LDAuNzY4LDE2LjI1NiwxMi42NA0KCWM2LjE3NiwxNC44OCwyMS4yMTYsNTEuNjE2LDIzLjAwOCw1NS4zOTJjMS44MjQsMy43NzYsMy42NDgsOC44OTYsMS4wODgsMTMuODU2Yy0yLjQsNS4xMi00LjUxMiw3LjM5Mi04LjI4OCwxMS43NDQNCgljLTMuNzc2LDQuMzUyLTcuMzYsNy42OC0xMS4xMzYsMTIuMzUyYy0zLjQ1Niw0LjA2NC03LjM2LDguNDE2LTMuMDA4LDE1LjkzNmM0LjM1Miw3LjM2LDE5LjM5MiwzMS45MDQsNDEuNTM2LDUxLjYxNg0KCWMyOC41NzYsMjUuNDQsNTEuNzQ0LDMzLjU2OCw2MC4wMzIsMzcuMDI0YzYuMTc2LDIuNTYsMTMuNTM2LDEuOTUyLDE4LjA0OC0yLjg0OGM1LjcyOC02LjE3NiwxMi44LTE2LjQxNiwyMC0yNi40OTYNCgljNS4xMi03LjIzMiwxMS41ODQtOC4xMjgsMTguMzY4LTUuNTY4YzYuOTEyLDIuNCw0My40ODgsMjAuNDgsNTEuMDA4LDI0LjIyNGM3LjUyLDMuNzc2LDEyLjQ4LDUuNTY4LDE0LjMwNCw4LjczNg0KCUM0MTEuMiwzMjkuMTUyLDQxMS4yLDM0NC4wMzIsNDA1LjAyNCwzNjEuNTA0eiIvPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=");
+}
+
+.wpmessagebutton_chat__agent--tg .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiBmaWxsPSIjMDM5YmU1IiByPSIxMiIvPjxwYXRoIGQ9Im01LjQ5MSAxMS43NCAxMS41Ny00LjQ2MWMuNTM3LS4xOTQgMS4wMDYuMTMxLjgzMi45NDNsLjAwMS0uMDAxLTEuOTcgOS4yODFjLS4xNDYuNjU4LS41MzcuODE4LTEuMDg0LjUwOGwtMy0yLjIxMS0xLjQ0NyAxLjM5NGMtLjE2LjE2LS4yOTUuMjk1LS42MDUuMjk1bC4yMTMtMy4wNTMgNS41Ni01LjAyM2MuMjQyLS4yMTMtLjA1NC0uMzMzLS4zNzMtLjEyMWwtNi44NzEgNC4zMjYtMi45NjItLjkyNGMtLjY0My0uMjA0LS42NTctLjY0My4xMzYtLjk1M3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+}
+
+.wpmessagebutton_chat__agent--ln .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMTIgLjVjLTYuNjE1IDAtMTIgNC4zOTgtMTIgOS44MDMgMCA0Ljg0MSA0LjI3IDguODk3IDEwLjAzNSA5LjY2OC4zOTEuMDgzLjkyMy4yNiAxLjA1OC41OTQuMTIuMzAzLjA3OS43NzEuMDM4IDEuMDg3bC0uMTY0IDEuMDI2Yy0uMDQ1LjMwMy0uMjQgMS4xOTMgMS4wNDkuNjQ5IDEuMjkxLS41NDIgNi45MTYtNC4xMDQgOS40MzYtNy4wMTkgMS43MjQtMS45IDIuNTQ4LTMuODQ3IDIuNTQ4LTYuMDA1IDAtNS40MDUtNS4zODUtOS44MDMtMTItOS44MDN6bS00LjY5NyAxMy4wMTdoLTIuMzg2Yy0uMzQ1IDAtLjYzLS4yODctLjYzLS42MzN2LTQuODAxYzAtLjM0Ny4yODUtLjYzNC42My0uNjM0LjM0OCAwIC42My4yODcuNjMuNjM0djQuMTY3aDEuNzU2Yy4zNDggMCAuNjI5LjI4NS42MjkuNjM0IDAgLjM0Ni0uMjgyLjYzMy0uNjI5LjYzM3ptMi40NjYtLjYzM2MwIC4zNDYtLjI4Mi42MzMtLjYzMS42MzMtLjM0NSAwLS42MjctLjI4Ny0uNjI3LS42MzN2LTQuODAxYzAtLjM0Ny4yODItLjYzNC42My0uNjM0LjM0NiAwIC42MjguMjg3LjYyOC42MzR6bTUuNzQxIDBjMCAuMjcyLS4xNzQuNTEzLS40MzIuNi0uMDY0LjAyMS0uMTMzLjAzMS0uMTk5LjAzMS0uMjExIDAtLjM5MS0uMDkxLS41MS0uMjUybC0yLjQ0My0zLjMzOHYyLjk1OGMwIC4zNDYtLjI3OS42MzMtLjYzMS42MzMtLjM0NiAwLS42MjYtLjI4Ny0uNjI2LS42MzN2LTQuOGMwLS4yNzIuMTczLS41MTMuNDMtLjU5OS4wNi0uMDIzLjEzNi0uMDMzLjE5NC0uMDMzLjE5NSAwIC4zNzUuMTA1LjQ5NS4yNTZsMi40NjIgMy4zNTF2LTIuOTc1YzAtLjM0Ny4yODItLjYzNC42My0uNjM0LjM0NSAwIC42My4yODcuNjMuNjM0em0zLjg1NS0zLjAzNWMuMzQ5IDAgLjYzLjI4Ny42My42MzUgMCAuMzQ3LS4yODEuNjM0LS42My42MzRoLTEuNzU1djEuMTMyaDEuNzU1Yy4zNDkgMCAuNjMuMjg1LjYzLjYzNCAwIC4zNDYtLjI4MS42MzMtLjYzLjYzM2gtMi4zODZjLS4zNDUgMC0uNjI3LS4yODctLjYyNy0uNjMzdi00LjgwMWMwLS4zNDcuMjgyLS42MzQuNjMtLjYzNGgyLjM4NmMuMzQ2IDAgLjYyNy4yODcuNjI3LjYzNCAwIC4zNTEtLjI4MS42MzQtLjYzLjYzNGgtMS43NTV2MS4xMzJ6IiBmaWxsPSIjNGNhZjUwIi8+PC9zdmc+");
+}
+
+.wpmessagebutton_chat__agent--ph .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGNpcmNsZSBzdHlsZT0iZmlsbDojMjE5NkYzOyIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2Ii8+DQo8cGF0aCBzdHlsZT0iZmlsbDojRkFGQUZBOyIgZD0iTTM4NCwzMDguOTI4Yy0yNy42MTYsMC01My45NTItNi4wMTYtNzguMjQtMTcuODg4Yy0zLjgwOC0xLjgyNC04LjIyNC0yLjExMi0xMi4yNTYtMC43MzYNCgljLTQuMDMyLDEuNDA4LTcuMzI4LDQuMzUyLTkuMTg0LDguMTZsLTExLjUyLDIzLjg0Yy0zNC41Ni0xOS44NC02My4yMzItNDguNTQ0LTgzLjEwNC04My4xMDRsMjMuODcyLTExLjUyDQoJYzMuODQtMS44NTYsNi43NTItNS4xNTIsOC4xNi05LjE4NGMxLjM3Ni00LjAzMiwxLjEyLTguNDQ4LTAuNzM2LTEyLjI1NmMtMTEuOTA0LTI0LjI1Ni0xNy45Mi01MC41OTItMTcuOTItNzguMjQNCgljMC04LjgzMi03LjE2OC0xNi0xNi0xNkgxMjhjLTguODMyLDAtMTYsNy4xNjgtMTYsMTZjMCwxNDkuOTg0LDEyMi4wMTYsMjcyLDI3MiwyNzJjOC44MzIsMCwxNi03LjE2OCwxNi0xNnYtNTkuMDcyDQoJQzQwMCwzMTYuMDk2LDM5Mi44MzIsMzA4LjkyOCwzODQsMzA4LjkyOHoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
+}
+
+.wpmessagebutton_chat__agent--sk .wpmessagebutton_chat__agent__photo:before {
+	background-image: url("data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMjMuMzA5IDE0LjU0N2MxLjczOC03LjgxLTUuMTA0LTE0LjkwNS0xMy4xMzktMTMuNTQzLTQuMzYyLTIuNzA3LTEwLjE3LjM1Mi0xMC4xNyA1LjU0MiAwIDEuMjA3LjMzMyAyLjMzNy45MTIgMy4zMTEtMS42MTUgNy44MjggNS4yODMgMTQuODIxIDEzLjMxMSAxMy4zNjYuOTM2LjQ5NSAyLjAwNC43NzcgMy4xMzkuNzc3IDQuOTQ5IDAgOC4xMTgtNS4xMzMgNS45NDctOS40NTN6bS0xMS4yMTMgNS4zMzJjLTIuMzQyIDAtNC42My0uNTY1LTUuOTg0LTIuNDk5LTIuMDE4LTIuODU0LjY0My00LjI4MiAxLjk0OS0zLjE5NCAxLjA5LjkxOS43NDggMy4xNDIgMy45NDkgMy4xNDIgMS40MTEgMCAzLjE1My0uNjAyIDMuMTUzLTIuMDAxIDAtMi44MTUtNi4yNDUtMS40ODMtOC43MjgtNC41NTItLjkxMi0xLjEyNC0xLjA4NC0zLjEwNy4wMzYtNC41NDUgMS45NTItMi41MTIgNy42OC0yLjY2NSAxMC4xNDMtLjc2OCAyLjI3NCAxLjc2IDEuNjYgNC4wOTYtLjE3NSA0LjA5Ni0yLjIwNyAwLTEuMDQ3LTIuODg4LTQuNjEtMi44ODgtMi41ODMgMC0zLjU5OSAxLjgzNy0xLjc4IDIuNzMxIDIuNDIxIDEuMjAyIDguNzUuODI3IDguNzUgNS42MDMtLjAwOCAzLjM1Ny0zLjI0NyA0Ljg3NS02LjcwMyA0Ljg3NXoiIGZpbGw9IiMwM2E5ZjQiLz48L3N2Zz4=");
+}
+
+.wpmessagebutton_chat__agent__detail {
+	flex-grow: 1;
+	padding-left: 15px;
+	color: #92A2C8;
+}
+
+.wpmessagebutton_chat__agent__detail__position {
+	font-size: 0.9em;
+}
+
+.wpmessagebutton_chat__agent__detail__name {
+	color: #1B2642;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 3px;
+}
+
+.wpmessagebutton_chat__agent__detail__availability {
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+
+.wpmessagebutton_chat__agent:hover {
+	background: rgb(250, 250, 250);
+}
+
+.wpmessagebutton_chat__agent.wpmessagebutton_chat__agent--unavailable {
+	pointer-events: none !important;
+	opacity: .5 !important;
+}
+
+.wpmessagebutton_chat__body__agents>a:first-child {
+	border-radius: 8px 8px 0 0;
+}
+
+.wpmessagebutton_chat__body__agents>a:last-child {
+	border-radius: 0 0 8px 8px;
+	border-bottom: none;
+}
+
+.wpmessagebutton_button {
+	position: relative;
+	float: right;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.wpmessagebutton_button__bubble {
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	background: #208CEB;
+	color: #fff;
+	padding: 0 15px;
+	height: 32px;
+	font-size: 1.1em;
+	line-height: 32px;
+	border-radius: 50px;
+	left: -100vw;
+}
+
+.wpmessagebutton_button__bubble::before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: auto;
+	right: -8px;
+	bottom: 10px;
+	border: 5px solid;
+	border-color: #208CEB transparent transparent #208CEB;
+}
+
+.wpmessagebutton_button__close {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	transform: scale(0);
+	transition: 0.1s all ease-out;
+}
+
+.wpmessagebutton_button__icon,
+.wpmessagebutton_button__close {
+	text-align: center;
+	visibility: visible;
+}
+
+.wpmessagebutton_button__icon {
+	opacity: 1;
+	transition: opacity 0.5s 0.5s;
+}
+
+.wpmessagebutton_button__icon svg,
+.wpmessagebutton_button__close svg {
+	width: 50%;
+	vertical-align: middle;
+}
+
+/* Opened style */
+.wpmessagebutton.wpmessagebutton--opened .wpmessagebutton_chat {
+	display: block;
+}
+
+.wpmessagebutton.wpmessagebutton--opened .wpmessagebutton_button__close {
+	transform: scale(1);
+	transition: all 0.5s ease-in;
+}
+
+.wpmessagebutton.wpmessagebutton--opened .wpmessagebutton_button__icon {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s 0.5s;
+}
+
+
+/* SHAPE */
+.wpmb_shape--rounded .wpmessagebutton_chat,
+.wpmb_shape--rounded .wpmessagebutton_button,
+.wpmb_shape--circle .wpmessagebutton_chat {
+	border-radius: 8px;
+}
+
+.wpmb_shape--circle .wpmessagebutton_button {
+	border-radius: 100%;
+}
+
+.wpmb_shape--rounded .wpmessagebutton_chat__header,
+.wpmb_shape--circle .wpmessagebutton_chat__header {
+	border-radius: 8px 8px 0 0;
+}
+
+.wpmb_shape--rounded .wpmessagebutton_chat__footer,
+.wpmb_shape--circle .wpmessagebutton_chat__footer {
+	border-radius: 0 0 8px 8px;
+}
+
+.wpmb_size--sm {
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+}
+
+.wpmb_size--md {
+	width: 64px;
+	height: 64px;
+	line-height: 64px;
+}
+
+.wpmb_size--lg {
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+}
+
+.wpmb_position--right {
+	right: 20px;
+}
+
+.wpmb_position--left {
+	left: 20px;
+}
+
+.wpmb_shadow--sm {
+	box-shadow: 0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.wpmb_shadow--md {
+	box-shadow: 0 4.5px 3.6px rgba(0, 0, 0, 0.024), 0 12.5px 10px rgba(0, 0, 0, 0.035), 0 30.1px 24.1px rgba(0, 0, 0, 0.046), 0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.wpmb_shadow--lg {
+	box-shadow: 0 2px 1.6px rgba(0, 0, 0, 0.017), 0 4.5px 3.6px rgba(0, 0, 0, 0.024), 0 7.9px 6.3px rgba(0, 0, 0, 0.03), 0 12.5px 10px rgba(0, 0, 0, 0.035), 0 19.3px 15.5px rgba(0, 0, 0, 0.04), 0 30.1px 24.1px rgba(0, 0, 0, 0.046), 0 50px 40px rgba(0, 0, 0, 0.053), 0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.wpmb_zindex {
+	z-index: 999999;
+}
+
+/* Animation */
+.wpmb_animated {
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes wpmb_bounceIn {
+
+	from,
+	20%,
+	40%,
+	60%,
+	80%,
+	to {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+
+	20% {
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes wpmb_bounceIn {
+
+	from,
+	20%,
+	40%,
+	60%,
+	80%,
+	to {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+
+	20% {
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.wpmb_bounceIn {
+	-webkit-animation-duration: 0.75s;
+	animation-duration: 0.75s;
+	-webkit-animation-name: wpmb_bounceIn;
+	animation-name: wpmb_bounceIn;
+}
+
+
+@-webkit-keyframes wpmb_bounceOut {
+	20% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+
+	50%,
+	55% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+}
+
+@keyframes wpmb_bounceOut {
+	20% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+
+	50%,
+	55% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+}
+
+.wpmb_bounceOut {
+	-webkit-animation-duration: 0.75s;
+	animation-duration: 0.75s;
+	-webkit-animation-name: wpmb_bounceOut;
+	animation-name: wpmb_bounceOut;
+}
+
+.wpmessagebutton_pro {
+	display: inline-block;
+	background: #FAC84F;
+	color: #965D01;
+	font-weight: bold;
+	padding: 5px 10px;
+	border-radius: 50px;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	vertical-align: top;
+}
