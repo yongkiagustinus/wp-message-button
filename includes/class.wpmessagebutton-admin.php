@@ -14,7 +14,8 @@ class WPMessageButton_Admin {
 		self::$initiated = true;
 	
 		add_action( 'admin_menu', array( 'WPMessageButton_Admin', 'register_admin_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Widget', 'enqueue' ) );
+		//add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Widget', 'enqueue' ) );
+		add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Admin', 'enqueue' ) );
 	
 	}
 
@@ -33,6 +34,34 @@ class WPMessageButton_Admin {
 			'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMjA4Q0VCIiBkPSJNNDUyLjEgNDlMNTIuMyAyNjUuM2MtNiAzLjMtNS42IDEyLjEuNiAxNC45bDY4LjIgMjUuN2M0IDEuNSA3LjIgNC41IDkgOC40bDUzIDEwOS4xYzEgNC44IDkuOSA2LjEgMTAgMS4ybC04LjEtOTAuMmMuNS02LjcgMy0xMyA3LjMtMTguMmwyMDcuMy0yMDMuMWMxLjItMS4yIDIuOS0xLjYgNC41LTEuMyAzLjQuOCA0LjggNC45IDIuNiA3LjZMMjI4IDMzOGMtNCA2LTYgMTEtNyAxOGwtMTAuNyA3Ny45Yy45IDYuOCA2LjIgOS40IDEwLjUgMy4zbDM4LjUtNDUuMmMyLjYtMy43IDcuNy00LjUgMTEuMy0xLjlsOTkuMiA3Mi4zYzQuNyAzLjUgMTEuNC45IDEyLjYtNC45TDQ2My44IDU4YzEuNS02LjgtNS42LTEyLjMtMTEuNy05eiIvPjwvc3ZnPg==',
 			80
 		);
+	}
+
+	/**
+	 * Enqueue scripts
+	 * 
+	 * @static
+	 */
+	public static function enqueue(){
+		$screen = get_current_screen();
+
+		// Call scripts only in WP Message Button page
+		if( $screen->id == 'toplevel_page_wpmessagebutton' ){
+			wp_enqueue_style( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/css/wpmessagebutton-admin.css', array(), '1.0', 'all' );
+			
+			// Load jQuery UI
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-accordion' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-datepicker' );
+
+			wp_enqueue_script( 'wpmessagebutton-jquery-validation', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/jquery.validate.min.js', array(), '1.19.1', true );
+			wp_enqueue_script( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/wpmessagebutton-admin.js', array(), '1.0', true );
+			
+			if( isset( $_GET['tab'] ) && $_GET['tab'] == 'customizer' ){
+				WPMessageButton_Widget::enqueue();
+			}
+		
+		}
 	}
 
 }

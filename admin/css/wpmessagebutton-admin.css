@@ -28,7 +28,8 @@
 }
 
 #agents .agent h2 input[type="text"] {
-	width: 50%;
+	min-width: 160px;
+	max-width: 70%;
 	border: none;
 }
 

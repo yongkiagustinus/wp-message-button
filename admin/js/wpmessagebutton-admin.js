@@ -40,7 +40,7 @@
 					return old.replace(/\-(\d+)/, '-' + i);
 				})
 				.end()
-				.find('input[type="radio"][checked="checked"]').prop('checked', true)
+				.find('input[type="radio"][checked="checked"]').prop('checked', true);
 		});
 	}
 
@@ -50,6 +50,15 @@
 		$('#agents .agent').last().clone().appendTo($('#agents')).find('input:not([type="radio"]),select,textarea').val('');
 		wpmb_reorder_agents();
 		return false;
+	});
+
+	// Delete agent
+	$(document).on('click', '.agent__delete', function (e) {
+		if (confirm('Are you sure?')) {
+			console.log('sure');
+		} else {
+			return false;
+		}
 	});
 
 	// Add time validation

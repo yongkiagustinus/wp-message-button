@@ -88,34 +88,8 @@ class WPMessageButton_Widget {
 		wp_register_style( 'wpmessagebutton', WPMESSAGEBUTTON_PLUGIN_URI . 'public/css/wpmessagebutton.css', array(), 'all' );
 		wp_register_script( 'wpmessagebutton', WPMESSAGEBUTTON_PLUGIN_URI . 'public/js/wpmessagebutton.js', array(), true );
 
-		if( is_admin() ){
-			$screen = get_current_screen();
-
-			// Call scripts only in WP Message Button page
-			if( $screen->id == 'toplevel_page_wpmessagebutton' ){
-				wp_enqueue_style( 'wpmessagebutton' );
-				wp_enqueue_style( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/css/wpmessagebutton-admin.css', array(), '1.0', 'all' );
-				
-				// Load jQUery UI
-				wp_enqueue_script( 'jquery-ui-core' );
-				wp_enqueue_script( 'jquery-ui-accordion' );
-				wp_enqueue_script( 'jquery-ui-sortable' );
-				wp_enqueue_script( 'jquery-ui-datepicker' );
-
-				wp_enqueue_script( 'wpmessagebutton-jquery-validation', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/jquery.validate.min.js', array(), '1.19.1', true );
-				wp_enqueue_script( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/wpmessagebutton-admin.js', array(), '1.0', true );
-				
-				if( isset( $_GET['tab'] ) && $_GET['tab'] == 'customizer' ){
-					wp_enqueue_script( 'wpmessagebutton' );
-				}
-			
-			}
-
-		} else {
-			wp_enqueue_style( 'wpmessagebutton' );
-			wp_enqueue_script( 'wpmessagebutton' );
-		}
-
+		wp_enqueue_style( 'wpmessagebutton' );
+		wp_enqueue_script( 'wpmessagebutton' );
 		
 		// Apply setting to CSS
 		$dynamic_css = '.wpmessagebutton_chat__header {

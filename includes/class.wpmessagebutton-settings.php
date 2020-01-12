@@ -47,7 +47,7 @@ class WPMessageButton_Settings {
 				<div class="agent stuffbox" data-agent="<?php echo $i; ?>">
 					<div class="inside">
 						<h2>
-							<input type="text" id="agent-name-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][name]" placeholder="<?php echo esc_attr( __( 'Insert agent name here', 'wp-message-button' ) ); ?>" value="<?php echo $name; ?>" required>
+							<input type="text" id="agent-name-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][name]" placeholder="<?php echo esc_attr( __( 'Insert agent name here', 'wp-message-button' ) ); ?>" value="<?php echo $name; ?>" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';" required>
 							<span class="agent__delete"><?php echo __( 'Delete', 'wp-message-button' ); ?></span>
 						</h2>
 						<div>
