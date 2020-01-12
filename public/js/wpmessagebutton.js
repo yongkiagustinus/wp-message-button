@@ -6,13 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	var wpmb_bubble = document.querySelector('.wpmessagebutton_button__bubble');
 
 	wpmb_toggle.addEventListener('click', function () {
-		wpmb_cont.classList.toggle('wpmessagebutton--opened');
-		wpmb_chat.classList.toggle('wpmb_bounceIn');
-		wpmb_bubble.classList.toggle('wpmb_bounceOut');
+		wpmb_toggle_chat();
 	});
 
 	// Adjust the bubble position
-	wpmb_bubble.style.left = '-' + (wpmb_bubble.offsetWidth + 15) + 'px';
+	wpmb_bubble.style.left = '-' + (wpmb_bubble.offsetWidth + 25) + 'px';
 
 	// If sound setting enabled
 	if (wpmessagebutton.open_on_load) {
@@ -20,6 +18,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.getElementById('wpmb_notification_sound').play();
 			wpmb_toggle.click();
 		}, wpmessagebutton.open_on_load_after);
+	}
+
+	window.addEventListener('click', function (e) {
+		if (wpmb_cont.classList.contains('wpmessagebutton--opened') && !wpmb_cont.contains(e.target)) {
+			wpmb_toggle_chat();
+		}
+	});
+
+	function wpmb_toggle_chat() {
+		wpmb_cont.classList.toggle('wpmessagebutton--opened');
+		wpmb_chat.classList.toggle('wpmb_bounceIn');
+		wpmb_bubble.classList.toggle('wpmb_bounceOut');
 	}
 
 });

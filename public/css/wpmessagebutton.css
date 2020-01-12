@@ -217,6 +217,7 @@
 
 .wpmessagebutton_button__icon svg,
 .wpmessagebutton_button__close svg {
+	display: inline-block;
 	width: 50%;
 	vertical-align: middle;
 }

@@ -33,6 +33,15 @@
 	border: none;
 }
 
+#agents .agent__photo {
+	text-align: center;
+}
+
+#agents .agent__photo img {
+	display: inline-block;
+	border-radius: 100%;
+}
+
 #agents .agent__delete {
 	float: right;
 	font-weight: 400;
@@ -86,7 +95,7 @@
 .wpmb-radio {
 	display: inline-block;
 	margin-right: 10px;
-	min-width: 200px;
+	min-width: 175px;
 	margin-bottom: 10px;
 }
 
@@ -183,6 +192,14 @@
 
 .wpmb-col-12 {
 	width: 100%;
+}
+
+.wpmb-col-9 {
+	width: 75%;
+}
+
+.wpmb-col-8 {
+	width: 66.6666%;
 }
 
 .wpmb-col-6 {

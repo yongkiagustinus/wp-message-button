@@ -39,7 +39,8 @@ class WPMessageButton_Settings {
 		<div id="agents">
 			<?php foreach( $agents as $i => $agent ){ ?>
 				<?php 
-				$name 				= $agent == 'first' ? '' : $agent['name'];	
+				$name 				= $agent == 'first' ? '' : $agent['name'];
+				$photo				= $agent == 'first' ? '' : $agent['photo'];
 				$handle				= $agent == 'first' ? '' : $agent['handle'];	
 				$message 			= $agent == 'first' ? '' : $agent['message'];	
 				$position 			= $agent == 'first' ? '' : $agent['position'];	
@@ -51,26 +52,42 @@ class WPMessageButton_Settings {
 							<span class="agent__delete"><?php echo __( 'Delete', 'wp-message-button' ); ?></span>
 						</h2>
 						<div>
-							<div class="wpmb-field">
-								<label for="agent-channel"><?php echo __( 'Select channel for this agent', 'wp-message-button' ); ?></label>
-								<?php 
-								$channels = array( 
-									'wa' 	=> __( 'Whatsapp', 'wp-message-button' ),
-									'fb'	=> __( 'Facebook Messenger', 'wp-message-button' ),
-									'tg'	=> __( 'Telegram', 'wp-message-button' ),
-									'ln'	=> __( 'Line', 'wp-message-button' ),
-									'sk'	=> __( 'Skype', 'wp-message-button' ),
-									'ph'	=> __( 'Phone Call', 'wp-message-button' )
-								); 
-								?>
-								<?php foreach( $channels as $id => $channel ){ ?>
-									<?php $saved = $agent == 'first' ? '' : $agent['channel']; ?>
-									<div class="wpmb-radio">
-										<input type="radio" name="wpmessagebutton_agents[<?php echo $i; ?>][channel]" id="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>" <?php checked( $saved, $id ); ?> value="<?php echo $id; ?>" required>
-										<label for="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>"><?php echo $channel; ?></label>
+							<div class="wpmb-row">
+								<div class="wpmb-col-3">
+									<div class="wpmb-field">
+										<div class="agent__photo">
+											<?php $photo = empty( $photo ) ? WPMESSAGEBUTTON_PLUGIN_URI . 'public/images/agent-photo-placeholder.png' : $photo; ?>
+											<img src="<?php echo $photo; ?>" alt="Agent Photo">
+											<a class="wpmb-add-agent-photo" href="javascript:void(0);"><?php echo __( 'Add/update agent photo', 'wp-message-button' ); ?></a>
+											<input type="hidden" id="agent-photo-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][photo]" value="<?php echo $photo; ?>">
+										</div>
 									</div>
-								<?php } ?>
+								</div>
+								<div class="wpmb-col-9">
+									<div class="wpmb-field">
+										<label for="agent-channel"><?php echo __( 'Select channel for this agent', 'wp-message-button' ); ?></label>
+										<?php 
+										$channels = array( 
+											'wa' 	=> __( 'Whatsapp', 'wp-message-button' ),
+											'fb'	=> __( 'FB Messenger', 'wp-message-button' ),
+											'tg'	=> __( 'Telegram', 'wp-message-button' ),
+											'ln'	=> __( 'Line', 'wp-message-button' ),
+											'sk'	=> __( 'Skype', 'wp-message-button' ),
+											'ph'	=> __( 'Phone Call', 'wp-message-button' )
+										); 
+										?>
+										<?php foreach( $channels as $id => $channel ){ ?>
+											<?php $saved = $agent == 'first' ? '' : $agent['channel']; ?>
+											<div class="wpmb-radio">
+												<input type="radio" name="wpmessagebutton_agents[<?php echo $i; ?>][channel]" id="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>" <?php checked( $saved, $id ); ?> value="<?php echo $id; ?>" required>
+												<label for="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>"><?php echo $channel; ?></label>
+											</div>
+										<?php } ?>
+									</div>
+								</div>
 							</div>
+							
+							
 							<div class="wpmb-row">
 								<div class="wpmb-col-6">
 									<div class="wpmb-field">
@@ -164,7 +181,7 @@ class WPMessageButton_Settings {
 					<a href="?page=wpmessagebutton&tab=agents" class="nav-tab <?php echo $active_tab == 'agents' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Agents', 'wp-message-button' ); ?></a>
 					<a href="?page=wpmessagebutton&tab=customizer" class="nav-tab <?php echo $active_tab == 'customizer' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Customizer', 'wp-message-button' ); ?></a>
 					<a href="?page=wpmessagebutton&tab=visibility" class="nav-tab <?php echo $active_tab == 'visibility' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Visibility', 'wp-message-button' ); ?></a>
-					<a href="<?php echo esc_url( 'https://smplwp.com/plugins/wp-message-button/#pro' ) ?>" target="_blank" class="nav-tab"><?php echo __( 'GO PRO!', 'wp-message-button' ); ?></a>
+					<a href="<?php echo esc_url( 'https://88digital.co/plugins/wp-message-button/#pro' ) ?>" target="_blank" class="nav-tab"><?php echo __( 'GO PRO!', 'wp-message-button' ); ?></a>
 				</h2>
 
 				<form action="options.php" method="post" id="wpmessagebutton-form" class="wpmb-form">
@@ -178,6 +195,10 @@ class WPMessageButton_Settings {
 							settings_fields( 'wpmessagebutton_customizer' );
 							do_settings_sections( 'wpmessagebutton_customizer' );
 							
+							// Enable or disable chatbox
+							// Close on click outside the opened box
+							// Header title with timeaware shortcode [wpmessagebutton_message morning="" afternoon="" night=""]
+
 							// Load preview chat box
 							WPMessageButton_Widget::html(); 
 

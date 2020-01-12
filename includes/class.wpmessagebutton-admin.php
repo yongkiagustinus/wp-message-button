@@ -14,7 +14,6 @@ class WPMessageButton_Admin {
 		self::$initiated = true;
 	
 		add_action( 'admin_menu', array( 'WPMessageButton_Admin', 'register_admin_menu' ) );
-		//add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Widget', 'enqueue' ) );
 		add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Admin', 'enqueue' ) );
 	
 	}
@@ -46,6 +45,10 @@ class WPMessageButton_Admin {
 
 		// Call scripts only in WP Message Button page
 		if( $screen->id == 'toplevel_page_wpmessagebutton' ){
+
+			// Load WP Media
+			wp_enqueue_media();
+
 			wp_enqueue_style( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/css/wpmessagebutton-admin.css', array(), '1.0', 'all' );
 			
 			// Load jQuery UI
@@ -56,6 +59,11 @@ class WPMessageButton_Admin {
 
 			wp_enqueue_script( 'wpmessagebutton-jquery-validation', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/jquery.validate.min.js', array(), '1.19.1', true );
 			wp_enqueue_script( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/js/wpmessagebutton-admin.js', array(), '1.0', true );
+
+			$vars['minimum_agent_notice']	= __( 'Cannot delete. You need to have minimum 1 agent', 'wp-message-button' );
+			$vars['delete_confirmation'] 	= __( 'Are you sure want to delete?', 'wp-message-button' );
+			$vars['input_time_invalid']	= __( 'Please enter a valid time, between 00:00 and 23:59', 'wp-message-button' );
+			wp_localize_script( 'wpmessagebutton-admin', 'wpmb_admin', $vars );
 			
 			if( isset( $_GET['tab'] ) && $_GET['tab'] == 'customizer' ){
 				WPMessageButton_Widget::enqueue();

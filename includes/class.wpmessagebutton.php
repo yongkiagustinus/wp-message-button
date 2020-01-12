@@ -12,9 +12,7 @@ class WPMessageButton {
 
 	private static function init_hooks() {
 		self::$initiated = true;
-
-		add_action( 'wp_enqueue_scripts', array( 'WPMessageButton_Widget', 'enqueue' ) );
-		
+		WPMessageButton_Widget::init();
 	}
 
 	/**
