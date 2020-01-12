@@ -18,17 +18,38 @@
 		placeholder: 'widget-placeholder',
 		stop: function (event, ui) {
 			ui.item.children('h2').triggerHandler('focusout');
-			// Function to fix the forms order after sort
-			console.log(ui.item.index());
+			wpmb_reorder_agents();
 		}
 	});
+
+	// Update agent fields order
+	function wpmb_reorder_agents() {
+		$('#agents .agent').each(function (i, e) {
+			$(e)
+				.data('agent', i)
+				.attr('data-agent', i)
+				.find('input,select,textarea').attr('name', function (idx, old) {
+					return old.replace(/\[(\d+)\]/, '[' + i + ']');
+				})
+				.end()
+				.find('input,select,textarea').attr('id', function (idx, old) {
+					return old.replace(/\-(\d+)/, '-' + i);
+				})
+				.end()
+				.find('label').attr('for', function (idx, old) {
+					return old.replace(/\-(\d+)/, '-' + i);
+				})
+				.end()
+				.find('input[type="radio"][checked="checked"]').prop('checked', true)
+		});
+	}
 
 	// Add agent
 	$(document).on('click', '#wpmb-add-agent', function (e) {
 		e.preventDefault();
-		// Clone an agent field
-		var agent = getOuterHTML($('#agents > div.agent'));
-
+		$('#agents .agent').last().clone().appendTo($('#agents')).find('input:not([type="radio"]),select,textarea').val('');
+		wpmb_reorder_agents();
+		return false;
 	});
 
 	// Add time validation

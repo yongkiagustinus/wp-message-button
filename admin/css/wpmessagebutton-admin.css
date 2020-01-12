@@ -10,24 +10,40 @@
 
 #agents .agent h2 {
 	position: relative;
+	padding-left: 50px;
 }
 
 #agents .agent h2:before {
 	content: "\f156";
 	position: absolute;
-	right: 20px;
+	left: 20px;
 	font-family: dashicons;
-	height: 50px;
+	height: 46px;
 	top: 0;
 	color: #ccd0d4;
 	text-align: center;
-	line-height: 50px;
+	line-height: 46px;
 	font-size: 20px;
+	cursor: grab;
 }
 
 #agents .agent h2 input[type="text"] {
 	width: 50%;
 	border: none;
+}
+
+#agents .agent__delete {
+	float: right;
+	font-weight: 400;
+	line-height: 30px;
+	color: #a00;
+	margin-right: 5px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+#agents .agent__delete:hover {
+	color: #dc3232;
 }
 
 #agents .agent .inside>div {

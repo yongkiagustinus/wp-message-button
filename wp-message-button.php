@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WP Message Button
- * Plugin URI: https://smplwp.com/plugins/wp-message-button/
+ * Plugin URI: https://88digital.co/plugins/wp-message-button/
  * Description: Display a chat button that link to popular messenger platform such as WhatsApp, Facebook Messenger, Telegram and Line. Customize the button and box design color, layout, positioning and show / hide in any page or post you like.
  * Version: 0.1.0
  * Author: smplWP
- * Author URI: https://smplwp.com
+ * Author URI: https://88digital.co
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
  * Domain Path: /languages
