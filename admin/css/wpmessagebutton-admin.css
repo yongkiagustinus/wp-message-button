@@ -4,8 +4,8 @@
 }
 
 .wpmessagebutton-settings-sidebar {
-	width: 30%;
-	float: left;
+	width: 25%;
+	float: right;
 }
 
 #agents .agent h2 {
@@ -42,6 +42,10 @@
 	border-radius: 100%;
 }
 
+#agents .agent__photo a {
+	display: block;
+}
+
 #agents .agent__delete {
 	float: right;
 	font-weight: 400;
@@ -60,6 +64,25 @@
 	display: none;
 	border-top: 1px solid #eee;
 	padding: 10px 20px;
+}
+
+/* Sidebar ad */
+.wpmessagebutton-ads {
+	padding: 30px;
+	background: #208CEB;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 0.2px;
+}
+
+.wpmessagebutton-ads p {
+	font-size: 15px;
+}
+
+.wpmessagebutton-ads__title {
+	margin: 0;
+	font-weight: bold;
+	font-size: 20px;
 }
 
 /* Field */
@@ -93,9 +116,7 @@
 
 /* Custom radio field */
 .wpmb-radio {
-	display: inline-block;
-	margin-right: 10px;
-	min-width: 175px;
+	display: block;
 	margin-bottom: 10px;
 }
 
@@ -188,6 +209,16 @@
 	float: left;
 	padding-left: 15px;
 	padding-right: 15px;
+}
+
+.wpmb-row.wpmb-row-narrow {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+.wpmb-row.wpmb-row-narrow [class^="wpmb-col-"] {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .wpmb-col-12 {

@@ -66,23 +66,27 @@ class WPMessageButton_Settings {
 								<div class="wpmb-col-9">
 									<div class="wpmb-field">
 										<label for="agent-channel"><?php echo __( 'Select channel for this agent', 'wp-message-button' ); ?></label>
-										<?php 
-										$channels = array( 
-											'wa' 	=> __( 'Whatsapp', 'wp-message-button' ),
-											'fb'	=> __( 'FB Messenger', 'wp-message-button' ),
-											'tg'	=> __( 'Telegram', 'wp-message-button' ),
-											'ln'	=> __( 'Line', 'wp-message-button' ),
-											'sk'	=> __( 'Skype', 'wp-message-button' ),
-											'ph'	=> __( 'Phone Call', 'wp-message-button' )
-										); 
-										?>
-										<?php foreach( $channels as $id => $channel ){ ?>
-											<?php $saved = $agent == 'first' ? '' : $agent['channel']; ?>
-											<div class="wpmb-radio">
-												<input type="radio" name="wpmessagebutton_agents[<?php echo $i; ?>][channel]" id="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>" <?php checked( $saved, $id ); ?> value="<?php echo $id; ?>" required>
-												<label for="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>"><?php echo $channel; ?></label>
-											</div>
-										<?php } ?>
+										<div class="wpmb-row wpmb-row-narrow">
+											<?php 
+											$channels = array( 
+												'wa' 	=> __( 'Whatsapp', 'wp-message-button' ),
+												'fb'	=> __( 'FB Messenger', 'wp-message-button' ),
+												'tg'	=> __( 'Telegram', 'wp-message-button' ),
+												'ln'	=> __( 'Line', 'wp-message-button' ),
+												'sk'	=> __( 'Skype', 'wp-message-button' ),
+												'ph'	=> __( 'Phone Call', 'wp-message-button' )
+											); 
+											?>
+											<?php foreach( $channels as $id => $channel ){ ?>
+												<?php $saved = $agent == 'first' ? '' : $agent['channel']; ?>
+												<div class="wpmb-col-4">
+													<div class="wpmb-radio">
+														<input type="radio" name="wpmessagebutton_agents[<?php echo $i; ?>][channel]" id="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>" <?php checked( $saved, $id ); ?> value="<?php echo $id; ?>" required>
+														<label for="agent-channel-<?php echo $id; ?>-<?php echo $i; ?>"><?php echo $channel; ?></label>
+													</div>
+												</div>
+											<?php } ?>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -180,7 +184,6 @@ class WPMessageButton_Settings {
 				<h2 class="nav-tab-wrapper">
 					<a href="?page=wpmessagebutton&tab=agents" class="nav-tab <?php echo $active_tab == 'agents' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Agents', 'wp-message-button' ); ?></a>
 					<a href="?page=wpmessagebutton&tab=customizer" class="nav-tab <?php echo $active_tab == 'customizer' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Customizer', 'wp-message-button' ); ?></a>
-					<a href="?page=wpmessagebutton&tab=visibility" class="nav-tab <?php echo $active_tab == 'visibility' ? 'nav-tab-active' : ''; ?>"><?php echo __( 'Visibility', 'wp-message-button' ); ?></a>
 					<a href="<?php echo esc_url( 'https://88digital.co/plugins/wp-message-button/#pro' ) ?>" target="_blank" class="nav-tab"><?php echo __( 'GO PRO!', 'wp-message-button' ); ?></a>
 				</h2>
 
@@ -211,17 +214,6 @@ class WPMessageButton_Settings {
 							//Channel: Whatsapp, Phone call, Messenger, Line, Telegram, Skype
 							break;
 
-						// Visibility settings tab
-						case 'visibility':
-							if( WPMessageButton::is_wpmb_pro_active() ){
-								settings_fields( 'wpmessagebutton_visibility' );
-								do_settings_sections( 'wpmessagebutton_visibility' );
-							} else {
-								echo '<h2>' . __( 'Show and hide the widget in any pages', 'wp-message-button' ) . '</h2>';
-								echo '[gif preview of visibility settings]';
-							}
-							break;
-
 					}
 					?>
 
@@ -233,18 +225,24 @@ class WPMessageButton_Settings {
 					<ul>
 						<li>Custom message per page</li>
 						<li>Add dynamic data such as: Post title, post id, in the message & title (PREMIUM)</li>
-						<li>Add more than 1 agent (PREMIUM)</li>
-						<li>Auto open chat on load with sound to catch attention (PREMIUM)</li>
-						<li>Dark Mode (PREMIUM)</li>
-						<li>More icon options (PREMIUM)</li>
-						<li>Visibility settings (PREMIUM)</li>
-						<li>Availability settings (PREMIUM)</li>
 					</ul>
 					Purchase premium plugin to unlock full features only $15 for unlimited sites and 1 year premium support
 					</div>
 				</form>
 			</div>
-			<div class="wpmessagebutton-settings-sidebar">Sidebar content here [UNLOCK PREMIUM]</div>
+			<div class="wpmessagebutton-settings-sidebar">
+				<div class="wpmessagebutton-ads">
+					<h4 class="wpmessagebutton-ads__title"><?php echo __( 'WP Message Button PRO', 'wp-message-button' ); ?></h4>
+					<p><?php echo __( 'Unlock cool premium features below to maximize your conversions', 'wp-message-button' ); ?></p>
+					<ul class="wpmessagebutton-ads__list">
+						<li><span class="dashicons dashicons-groups"></span> <?php echo __( 'Add more than 1 agent', 'wp-message-button' ); ?></li>
+						<li><span class="dashicons dashicons-clock"></span> <?php echo __( 'Agent availability settings', 'wp-message-button' ); ?></li>
+						<li><span class="dashicons dashicons-star-half"></span> <?php echo __( 'Dark mode theme for the chat box', 'wp-message-button' ); ?></li>
+						<li><span class="dashicons dashicons-format-audio"></span> <?php echo __( 'Catch your visitor attention with notification sound on load', 'wp-message-button' ); ?></li>
+						<li><span class="dashicons dashicons-format-chat"></span> <?php echo __( '20 chat box icons to choose', 'wp-message-button' ); ?></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 	<?php }
