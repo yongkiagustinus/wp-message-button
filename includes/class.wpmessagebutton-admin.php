@@ -67,6 +67,7 @@ class WPMessageButton_Admin {
 			$vars['minimum_agent_notice']	= __( 'Cannot delete. You need to have minimum 1 agent', 'wp-message-button' );
 			$vars['delete_confirmation'] 	= __( 'Are you sure want to delete?', 'wp-message-button' );
 			$vars['input_time_invalid']	= __( 'Please enter a valid time, between 00:00 and 23:59', 'wp-message-button' );
+			$vars['choose_image']			= __( 'Choose Image', 'wp-message-button' );
 			wp_localize_script( 'wpmessagebutton-admin', 'wpmb_admin', $vars );
 			
 			WPMessageButton_Widget::enqueue();

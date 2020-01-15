@@ -58,6 +58,11 @@
 	text-align: center;
 }
 
+.wpmessagebutton_chat__footer a {
+	color: inherit;
+	text-decoration: underline;
+}
+
 .wpmessagebutton_chat__agent {
 	display: flex;
 	background: #fff;

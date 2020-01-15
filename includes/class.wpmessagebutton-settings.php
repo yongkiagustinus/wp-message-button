@@ -3,12 +3,12 @@ class WPMessageButton_Settings {
 	
 	public static function init(){
 		
-		// Agents settings
+		// Register agents settings
 		register_setting( 'wpmessagebutton_agents', 'wpmessagebutton_agents', array( 'WPMessageButton_Settings', 'sanitize' ) );
 			add_settings_section( 'section_agents', '', '', 'wpmessagebutton_agents' );
-			add_settings_field( 'field_agents', __( 'Agents', 'wp-message-button' ), array( 'WPMessageButton_Settings', 'field_agents' ), 'wpmessagebutton_agents', 'section_agents' );
+				add_settings_field( 'field_agents', __( 'Agents', 'wp-message-button' ), array( 'WPMessageButton_Settings', 'field_agents' ), 'wpmessagebutton_agents', 'section_agents' );
 
-		// Customizer settings
+		// Register customizer settings
 		register_setting( 'wpmessagebutton_customizer', 'wpmessagebutton_customizer', array( 'WPMessageButton_Settings', 'sanitize' ) );
 			add_settings_section( 'section_customizer_settings', '', '', 'wpmessagebutton_customizer' );
 				add_settings_field( 'field_customizer', '', array( 'WPMessageButton_Settings', 'field_customizer' ), 'wpmessagebutton_customizer', 'section_customizer_settings', array( 'class' => 'noth' ) );
@@ -20,7 +20,7 @@ class WPMessageButton_Settings {
 	 */
 	public static function field_agents() { ?>
 		<?php 
-		$agents = get_option( 'wpmessagebutton_agents' );
+		$agents = get_option( 'wpmessagebutton_agents', array( 'first' ) );
 		$agents = WPMessageButton::is_wpmb_pro_active() ? $agents : array_slice( $agents, 0, 1 );
 		$agents = empty( $agents ) ? array( 'first' ) : $agents;
 		?>
@@ -57,7 +57,7 @@ class WPMessageButton_Settings {
 										<div class="wpmb-row wpmb-row-narrow">
 											<?php 
 											$channels = array( 
-												'wa' 	=> __( 'Whatsapp', 'wp-message-button' ),
+												'wa' 	=> __( 'WhatsApp', 'wp-message-button' ),
 												'fb'	=> __( 'FB Messenger', 'wp-message-button' ),
 												'tg'	=> __( 'Telegram', 'wp-message-button' ),
 												'ln'	=> __( 'Line', 'wp-message-button' ),
@@ -137,8 +137,9 @@ class WPMessageButton_Settings {
 	 */
 	public static function field_customizer(){
 		$customizer 			= get_option( 'wpmessagebutton_customizer', self::customizer_default() );
-		$header_bg_default 	= $customizer['mode'] == 'light' ? array( '#0052D4', '#65C7F7' ) : array( '#0E0E0E', '#151515' );
-		$icon_bg_default 		= $customizer['mode'] == 'light' ? '#208CEB' : '#0E0E0E';
+		$default_color			= WPMessageButton_Widget::default_color();
+		$header_bg_default 	= $customizer['mode'] == 'light' ? $default_color['header_bg']['light'] : $default_color['header_bg']['dark'];
+		$icon_bg_default 		= $customizer['mode'] == 'light' ? $default_color['icon_bg']['light'] : $default_color['icon_bg']['dark'];
 		?>
 
 		<div class="wpmb-field">
@@ -146,17 +147,18 @@ class WPMessageButton_Settings {
 			<div class="wpmb-row">
 				<div class="wpmb-col-4">
 					<div class="wpmb-radio">
-						<input type="radio" id="wpmb-mode-light" name="wpmessagebutton_customizer[mode]" <?php checked( 'light', $customizer['mode'] ); ?> value="light" required>
+						<input type="radio" id="wpmb-mode-light" class="wpmb-switch-mode" name="wpmessagebutton_customizer[mode]" <?php checked( 'light', $customizer['mode'] ); ?> value="light" required>
 						<label for="wpmb-mode-light"><?php echo __( 'Light', 'wp-message-button' ); ?></label>
 					</div>
 				</div>
 				<div class="wpmb-col-4">
 					<div class="wpmb-radio <?php echo WPMessageButton::is_wpmb_pro_active() ? '' : 'wpmb-disabled'; ?>">
-						<input type="radio" id="wpmb-mode-dark" <?php disabled( WPMessageButton::is_wpmb_pro_active(), false ); ?> name="wpmessagebutton_customizer[mode]" <?php checked( 'dark', $customizer['mode'] ); ?> value="dark" required>
+						<input type="radio" id="wpmb-mode-dark" class="wpmb-switch-mode" <?php disabled( WPMessageButton::is_wpmb_pro_active(), false ); ?> name="wpmessagebutton_customizer[mode]" <?php checked( 'dark', $customizer['mode'] ); ?> value="dark" required>
 						<label for="wpmb-mode-dark"><?php echo __( 'Dark', 'wp-message-button' ); ?></label>
 					</div>
 				</div>
 			</div>
+			<p class="description"><?php echo __( 'Default color of the header & icon background will be changed when switching the mode', 'wp-message-button' ); ?></p>
 			<?php if( ! WPMessageButton::is_wpmb_pro_active() ){ ?>
 				<p class="description"><?php echo __( 'Get <strong>WP Message Button PRO</strong>, to unlock Dark Mode', 'wp-message-button' ); ?></p>
 			<?php } ?>
@@ -201,6 +203,10 @@ class WPMessageButton_Settings {
 			<input type="text" id="wpmb-icon-background" class="wpmb-color-picker" name="wpmessagebutton_customizer[icon_bg]" value="<?php echo $customizer['icon_bg']; ?>" data-default-color="<?php echo $icon_bg_default; ?>">
 		</div>
 
+		<div class="wpmb-field">
+			<label><input type="checkbox" name="wpmessagebutton_customizer[keep_open]" value="1" <?php checked( 1, $customizer['keep_open'] ); ?> /> <?php echo __( 'Keep the message box open when user click outside the box', 'wp-message-button' ); ?></label>
+		</div>
+
 		<?php do_action( 'wpmessagebutton_after_customizer', $customizer ); ?>
 
 	<?php }
@@ -211,8 +217,30 @@ class WPMessageButton_Settings {
 	 * @var $input 
 	 */
 	public static function sanitize( $input ){
+		$input = array_map( array( 'WPMessageButton_Settings', 'sanitize_field' ), $input );
 		return $input;
 	}
+
+	/**
+	 * Sanitize each field
+	 */
+	public static function sanitize_field( $value ){
+		if( is_array( $value ) ){
+			$value = array_map( 'sanitize_text_field', $value ); 
+		} else {
+			$value = sanitize_text_field( $value );
+		}
+		return $value;
+	}
+
+	/**
+	 * Check if valid color hex
+	 */
+	public static function validate_color($color) {
+		$color = ltrim($color, '#');
+		if ( ctype_xdigit($color) && (strlen($color) == 6 || strlen($color) == 3)) return true;
+		else return false;
+  	}
 
 	/**
 	 * Settings Page
@@ -260,10 +288,8 @@ class WPMessageButton_Settings {
 							case 'customizer':
 								settings_fields( 'wpmessagebutton_customizer' );
 								do_settings_sections( 'wpmessagebutton_customizer' );
-								
-								// Load preview chat box
+								// Load message box for preview
 								WPMessageButton_Widget::html(); 
-
 								break;
 							
 							// Agents settings tab
@@ -293,10 +319,10 @@ class WPMessageButton_Settings {
 							<li><span class="dashicons dashicons-admin-customizer"></span> <?php echo __( 'More customization options', 'wp-message-button' ); ?></li>
 							<li><span class="dashicons dashicons-update"></span> <?php echo __( 'FREE lifetime upgrade for the PRO version', 'wp-message-button' ); ?></li>
 							<li><span class="dashicons dashicons-admin-multisite"></span> <?php echo __( 'Use PRO version on unlimited sites', 'wp-message-button' ); ?></li>
-							<li><span class="dashicons dashicons-sos"></span> <?php echo __( 'Direct & priority support for 1 year', 'wp-message-button' ); ?></li>
+							<li><span class="dashicons dashicons-sos"></span> <?php echo __( 'Direct & priority support for 6 months', 'wp-message-button' ); ?></li>
 						</ul>
 						<div class="wpmessagebutton-ads__cta">
-							<div><?php echo __( 'ONLY <u>$15</u>', 'wp-message-button' ); ?></div>
+							<div><?php echo __( 'FOR ONLY $15', 'wp-message-button' ); ?></div>
 							<span><?php echo __( 'One time payment', 'wp-message-button' ); ?></span>
 							<a href="<?php echo WPMESSAGEBUTTON_GET_PRO_URI; ?>"><?php echo __( 'GET THE PRO VERSION!', 'wp-message-button' ); ?></a>
 						</div>
@@ -319,6 +345,9 @@ class WPMessageButton_Settings {
 		$default['footer_text']			= '';
 		$default['bubble_text']			= 'Hi there, do you need help?';
 		$default['icon_bg']				= '#208CEB';
+		$default['keep_open']			= 0;
+		$default['auto_open'] 			= 0;
+		$default['play_sound']			= 0;
 		return apply_filters( 'wpmessagebutton_customizer_default', $default );
 	}
 

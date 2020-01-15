@@ -13,15 +13,17 @@ class WPMessageButton_Widget {
 	 * @static
 	 */
 	public static function html(){ ?>
-		<?php 
-		$agents 		= get_option( 'wpmessagebutton_agents' ); 
-		$customizer	= get_option( 'wpmessagebutton_customizer', WPMessageButton_Settings::customizer_default() );
-		?>
-		<?php if( count( $agents ) > 0 && $agent[0] != 'first' ){ ?>
-			<?php 
-			$classes = apply_filters( 'wpmessagebutton_classes', array( 'wpmessagebutton', 'wpmb_zindex', 'wpmb_position--right', 'wpmb_shape--rounded' ), $customizer );	
+		<?php do_action( 'wpmessagebutton_before_render' ); ?>
+		<?php $agents = get_option( 'wpmessagebutton_agents' ); ?>
+		<?php if( $agents && $agent[0] != 'first' ){ ?>
+			<?php
+			$agents 			= WPMessageButton::is_wpmb_pro_active() ? $agents : array_slice( $agents, 0, 1 );
+			$customizer		= get_option( 'wpmessagebutton_customizer', WPMessageButton_Settings::customizer_default() );
+			$button_icon	= '<svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M425.9 170.4H204.3c-21 0-38.1 17.1-38.1 38.1v154.3c0 21 17.1 38 38.1 38h126.8c2.8 0 5.6 1.2 7.6 3.2l63 58.1c3.5 3.4 9.3 2 9.3-2.9v-50.6c0-6 3.8-7.9 9.8-7.9h1c21 0 42.1-16.9 42.1-38V208.5c.1-21.1-17-38.1-38-38.1z"/><path d="M174.4 145.9h177.4V80.6c0-18-14.6-32.6-32.6-32.6H80.6C62.6 48 48 62.6 48 80.6v165.2c0 18 14.6 32.6 32.6 32.6h61.1v-99.9c.1-18 14.7-32.6 32.7-32.6z"/></svg>';
+			$button_icon	= apply_filters( 'wpmessagebutton_button_icon', '<svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M425.9 170.4H204.3c-21 0-38.1 17.1-38.1 38.1v154.3c0 21 17.1 38 38.1 38h126.8c2.8 0 5.6 1.2 7.6 3.2l63 58.1c3.5 3.4 9.3 2 9.3-2.9v-50.6c0-6 3.8-7.9 9.8-7.9h1c21 0 42.1-16.9 42.1-38V208.5c.1-21.1-17-38.1-38-38.1z"/><path d="M174.4 145.9h177.4V80.6c0-18-14.6-32.6-32.6-32.6H80.6C62.6 48 48 62.6 48 80.6v165.2c0 18 14.6 32.6 32.6 32.6h61.1v-99.9c.1-18 14.7-32.6 32.7-32.6z"/></svg>', $button_icon );
 			?>
-			<div class="<?php echo implode( ' ', $classes ); ?>">
+			<?php $classes = apply_filters( 'wpmessagebutton_classes', array( 'wpmessagebutton', 'wpmb_zindex', 'wpmb_position--right', 'wpmb_shape--rounded' ), $customizer ); ?>
+			<div id="wpmessagebutton" class="<?php echo implode( ' ', $classes ); ?>">
 				<div class="wpmessagebutton_chat wpmb_animated wpmb_shadow--md">
 					<div class="wpmessagebutton_chat__header">
 						<div class="wpmessagebutton_chat__header__title"><?php echo $customizer['header_title']; ?></div>
@@ -32,10 +34,13 @@ class WPMessageButton_Widget {
 							<?php foreach( $agents as $agent ){ ?>
 								<?php 
 								$url = self::generate_url( $agent['channel'], $agent['handle'], $agent['message'] );	
+								$available = apply_filters( 'wpmessagebutton_agent_availability', true, $agent['availability'] );
 								unset( $agent_classes );
 								$agent_classes[] = 'wpmessagebutton_chat__agent';
 								$agent_classes[] = 'wpmessagebutton_chat__agent--' . $agent['channel'];
-								//$agent_classes[] = 'wpmessagebutton_chat__agent--unavailable';
+								if( ! $available ) {
+									$agent_classes[] = 'wpmessagebutton_chat__agent--unavailable';
+								}
 								?>
 								<a href="<?php echo $url; ?>" target="_blank" class="<?php echo implode( ' ', $agent_classes ); ?>">
 									<div class="wpmessagebutton_chat__agent__photo">
@@ -44,7 +49,7 @@ class WPMessageButton_Widget {
 									<div class="wpmessagebutton_chat__agent__detail">
 										<div class="wpmessagebutton_chat__agent__detail__position"><?php echo $agent['position']; ?></div>
 										<div class="wpmessagebutton_chat__agent__detail__name"><?php echo $agent['name']; ?></div>
-										<div class="wpmessagebutton_chat__agent__detail__availability">Available from 09:00 to 17:00</div>
+										<?php do_action( 'wpmessagebutton_after_agent_name', $agent, $availability ); ?>
 									</div>
 								</a>
 							<?php } ?>
@@ -55,10 +60,11 @@ class WPMessageButton_Widget {
 				<div class="wpmessagebutton_button wpmb_size--md wpmb_shadow--md">
 					<?php if( ! empty( $customizer['bubble_text'] ) ){ ?><div class="wpmessagebutton_button__bubble wpmb_animated wpmb_bounceIn"><?php echo $customizer['bubble_text']; ?></div><?php } ?>
 					<div class="wpmessagebutton_button__close"><svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M278.6 256l68.2-68.2c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-68.2-68.2c-6.2-6.2-16.4-6.2-22.6 0-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3l68.2 68.2-68.2 68.2c-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3 6.2 6.2 16.4 6.2 22.6 0l68.2-68.2 68.2 68.2c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6L278.6 256z"/></svg></div>
-					<div class="wpmessagebutton_button__icon"><svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M425.9 170.4H204.3c-21 0-38.1 17.1-38.1 38.1v154.3c0 21 17.1 38 38.1 38h126.8c2.8 0 5.6 1.2 7.6 3.2l63 58.1c3.5 3.4 9.3 2 9.3-2.9v-50.6c0-6 3.8-7.9 9.8-7.9h1c21 0 42.1-16.9 42.1-38V208.5c.1-21.1-17-38.1-38-38.1z"/><path d="M174.4 145.9h177.4V80.6c0-18-14.6-32.6-32.6-32.6H80.6C62.6 48 48 62.6 48 80.6v165.2c0 18 14.6 32.6 32.6 32.6h61.1v-99.9c.1-18 14.7-32.6 32.7-32.6z"/></svg></div>
+					<div class="wpmessagebutton_button__icon"><?php echo $button_icon; ?></div>
 				</div>
-				<audio src="<?php echo WPMESSAGEBUTTON_PLUGIN_URI . 'public/audio/oh-finally.mp3'; ?>" id="wpmb_notification_sound"></audio>
+				<?php do_action( 'wpmessagebutton_after_button' ); ?>
 			</div>
+			<?php do_action( 'wpmessagebutton_after_render' ); ?>
 		<?php } ?>
 	<?php }
 
@@ -69,9 +75,9 @@ class WPMessageButton_Widget {
 		wp_enqueue_style( 'wpmessagebutton' );
 		wp_enqueue_script( 'wpmessagebutton' );
 		
-		$customizer	= get_option( 'wpmessagebutton_customizer', WPMessageButton_Settings::customizer_default() );
+		$customizer	= get_option( 'wpmessagebutton_customizer' );
 
-		// Apply setting to CSS
+		// Dynamic CSS for customizer settings
 		ob_start(); ?>
 			.wpmessagebutton{font-size:14px;}
 			.wpmessagebutton_chat__header {
@@ -88,14 +94,14 @@ class WPMessageButton_Widget {
 			.wpmessagebutton_button__bubble::before {
 				border-color: <?php echo $customizer['icon_bg']; ?> transparent transparent <?php echo $customizer['icon_bg']; ?>;
 			}
+			<?php do_action( 'wpmessagebutton_after_dynamic_css' ); ?>
 		<?php
 		$dynamic_css = ob_get_clean();
 		wp_add_inline_style( 'wpmessagebutton', $dynamic_css );
 
 		// Apply settings to JS
 		$vars['customization']			= $customizer;
-		$vars['open_on_load'] 			= false;
-		$vars['open_on_load_after'] 	= 3000;
+		$vars['default_color']			= self::default_color();
 		wp_localize_script( 'wpmessagebutton', 'wpmessagebutton', $vars );
 
 	}
@@ -127,6 +133,25 @@ class WPMessageButton_Widget {
 				break;
 		}
 		return $url;
+	}
+
+	/**
+	 * Default color for light & dark mode
+	 * 
+	 * @static
+	 */
+	public static function default_color(){
+		$default_color = array(
+			'header_bg'		=> array(
+				'light'		=> array( '#0052D4', '#65C7F7' ),
+				'dark'		=> array( '#0E0E0E', '#151515' )
+			),
+			'icon_bg'		=> array(
+				'light' 	=> '#208CEB',
+				'dark'	=> '#0E0E0E'
+			)
+		);
+		return apply_filters( 'wpmessagebutton_default_color', $default_color );
 	}
 
 }

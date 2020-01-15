@@ -1,5 +1,4 @@
 <?php 
-
 class WPMessageButton {
 	
 	private static $initiated = false;
@@ -17,34 +16,23 @@ class WPMessageButton {
 
 	/**
 	 * Run on plugin activation
-	 * 
-	 * Set default options
-	 * 
+
 	 * @static
 	 */
 	public static function plugin_activation(){
-	}
-
-	/**
-	 * Run on plugin deactivation
-	 * 
-	 * Flush rewrite, removing scheduled event
-	 * 
-	 * @static
-	 */
-	public static function plugin_deactivation(){
-
+		// Set default options
+		update_option( 'wpmessagebutton_customizer', WPMessageButton_Settings::customizer_default() );		
 	}
 
 	/**
 	 * Run on plugin uninstall
 	 * 
-	 * Cleaning options, remove custom DB tables
-	 * 
 	 * @static
 	 */
 	public static function plugin_uninstall(){
-
+		// Delete plugin options
+		delete_option( 'wpmessagebutton_agents' );
+		delete_option( 'wpmessagebutton_customizer' );
 	}
 
 	/**
@@ -53,6 +41,9 @@ class WPMessageButton {
 	 * @return boolean
 	 */
 	public static function is_wpmb_pro_active(){
+		if( ! is_admin() ){
+			include_once( ABSPATH .'wp-admin/includes/plugin.php' );
+		}
 		return is_plugin_active( 'wp-message-button-pro/wp-message-button-pro.php' );
 	}
 

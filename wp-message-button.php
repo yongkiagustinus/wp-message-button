@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: WP Message Button
- * Plugin URI: https://88digital.co/plugins/wp-message-button/
+ * Plugin URI: https://88digital.co/stuff/plugins/wp-message-button/
  * Description: Display a chat button that link to popular messenger platform such as WhatsApp, Facebook Messenger, Telegram and Line. Customize the button and box design color, layout, positioning and show / hide in any page or post you like.
- * Version: 0.1.0
+ * Version: 1.0
  * Author: 88digital
  * Author URI: https://88digital.co
  * License: GPLv2 or later
@@ -12,7 +12,7 @@
  */
 
 /*
- 	Copyright (C) 2020 smplWP
+ 	Copyright (C) 2020 88digital
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) { die( 'Forbidden' ); }
 
 define( 'WPMESSAGEBUTTON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPMESSAGEBUTTON_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
-define( 'WPMESSAGEBUTTON_GET_PRO_URI', 'https://88digital.co/plugins/wp-message-button/#pro' );
+define( 'WPMESSAGEBUTTON_GET_PRO_URI', 'https://88digital.co/stuff/plugins/wp-message-button/#pro' );
 
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton.php' );
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-settings.php' );
@@ -41,10 +41,8 @@ require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-widge
 add_action( 'init', array( 'WPMessageButton', 'init' ) );
 
 register_activation_hook( __FILE__, array( 'WPMessageButton', 'plugin_activation' ) );
-register_deactivation_hook( __FILE__, array( 'WPMessageButton', 'plugin_deactivation' ) );
 register_uninstall_hook( __FILE__, array( 'WPMessageButton', 'plugin_uninstall' ) );
 
-// Init in admin
 if( is_admin() ){
 	require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-admin.php' );
 	add_action( 'init', array( 'WPMessageButton_Admin', 'init' ) );

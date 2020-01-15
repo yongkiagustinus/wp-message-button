@@ -11,32 +11,55 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Display a chat button that link to popular messenger platform such as WhatsApp, Facebook Messenger, Telegram and Line. Customize the button and box design color, layout, positioning and show / hide in any page or post you like.
 
 == Description ==
-Long description of this great plugin. No characters limit, and you can use markdown.
+Check our presentation & demo page [here](https://88digital.co/stuff/plugins/wp-message-button/)
+WP Message Button allows your customers to contact you directly from the button and message box displayed on your website. 
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-markdown parsed.
+With WP Message Button you can add a direct link to multiple popular messaging channels such as WhatsApp, Facebook Messenger, Telegram, Line, Skype, and even a direct phone call.
 
-Ordered list:
+= WHY USING WP MESSAGE BUTTON ? =
+With WP Message Button you can receive a message from your customers directly to you or your business smartphone and all in your favorite messaging app that you prefer. You don't need to register or install any other live chat app to use this plugin.
 
-1. Some feature
-1. Another feature
-1. Something else about the plugin
+When your customer clicked an agent from their mobile phone, it will open the selected messenger app directly. Your customer will be able to reach you easily and you also able to respond quickly that will increase your conversion.
 
-Unordered list:
+= HOW TO SETUP & HOW TO USE =
+We keep it simple with this plugin
+1. Activate the WP Message Button plugin
+1. Insert your name and contact information in the settings page
+1. Done, your customer can contact you directly.
 
-* something
-* something else
-* third thing
+= WP MESSAGE BUTTON FEATURES =
+* Floating & eye-catching message button
+* A beautifully designed message box
+* Lightweight and not slowing down your site, only ~ 20kb
+* Mobile responsive
+* Google Analytic event tracking
+* Facebook Pixel event tracking
+* Add a prefilled message to WhatsApp link
+* Custom message box text
+* Custom button text
+* Custom footer text
+* Customizable header & button color
+* Upload and display agent photo
+* Agent additional information such as name & position
+* Message button & box build with plain javascript and doesn't require any dependency
 
-Link to [WordPress](http://wordpress.org/ \"Your favorite software\") and one to [Markdown\'s Syntax Documentation][markdown syntax].
+= WP MESSAGE BUTTON PRO =
+WP Message Button Pro gives you even more features & functionality. If you want to display more agents, add agent availability schedule or need any of these premium features:
+* Add more than 1 agent
+* Agent availability time settings
+* Dark mode theme for the message button & box
+* Catch attention with a notification sound
+* More customization options such as header background pattern, change button icon, change the notification sound
+* FREE lifetime upgrade of the PRO version
+* Use PRO version on unlimited sites
+* Direct & priority support for 6 months
 
-Titles are optional, naturally.
+Get [WP Message Button Pro](https://88digital.co/stuff/plugins/wp-message-button/#pro)
 
-Asterisks for *emphasis*.
+= DEVELOPED BY =
+[88digital](https://88digital.co/)
 
-Double it up  for **strong**.
-
-= Credits =
+= CREDITS =
 * Whatsapp, Messenger, Line & Telegram indicator icon by [Pixel Perfect](https://www.flaticon.com/authors/pixel-perfect)
 
 == Installation ==
@@ -44,11 +67,11 @@ Double it up  for **strong**.
 1. Activate the plugin through the \"Plugins\" menu in WordPress.
 
 == Frequently Asked Questions ==
-= A question that someone might have =
-An answer to that question.
+= How do i get support? =
+You can get support by going to Support section of this plugin page
 
-= What about foo bar? =
-Answer to foo bar dilemma.
+= Does this plugin GDPR compatible? =
+Yes, we don't store any personal information and not using cookies
 
 == Screenshots ==
 1. The screenshot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
@@ -56,16 +79,5 @@ Answer to foo bar dilemma.
 3. The screenshot description corresponds to screenshot-3.(png|jpg|jpeg|gif).
 
 == Changelog ==
-= 0.2 =
-* A change since the previous version.
-* Another change.
-
-= 0.1 =
+= 1.0 =
 * Initial release.
-
-== Upgrade Notice ==
-= 0.2 =
-Upgrade notices describe the reason a user should upgrade
-
-= 0.1 =
-This version fixes a security related bug. Upgrade immediately.
