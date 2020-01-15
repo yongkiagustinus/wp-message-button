@@ -24,6 +24,7 @@
 
 .wpmessagebutton_chat__header {
 	padding: 30px 40px 80px;
+	color: #fff;
 }
 
 .wpmessagebutton_chat__header__title {
@@ -237,7 +238,6 @@
 	opacity: 0;
 	transition: opacity 0.5s 0.5s;
 }
-
 
 /* SHAPE */
 .wpmb_shape--rounded .wpmessagebutton_chat,
@@ -455,16 +455,4 @@
 	animation-duration: 0.75s;
 	-webkit-animation-name: wpmb_bounceOut;
 	animation-name: wpmb_bounceOut;
-}
-
-.wpmessagebutton_pro {
-	display: inline-block;
-	background: #FAC84F;
-	color: #965D01;
-	font-weight: bold;
-	padding: 5px 10px;
-	border-radius: 50px;
-	font-size: 0.7em;
-	text-transform: uppercase;
-	vertical-align: top;
 }

@@ -14,7 +14,7 @@ class WPMessageButton_Admin {
 		self::$initiated = true;
 	
 		add_action( 'admin_menu', array( 'WPMessageButton_Admin', 'register_admin_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Admin', 'enqueue' ) );
+		add_action( 'admin_enqueue_scripts', array( 'WPMessageButton_Admin', 'enqueue' ), 90 );
 	
 	}
 
@@ -49,6 +49,10 @@ class WPMessageButton_Admin {
 			// Load WP Media
 			wp_enqueue_media();
 
+			// Load WP Color Picker
+			wp_enqueue_style( 'wp-color-picker' ); 
+			wp_enqueue_script( 'wp-color-picker' ); 
+
 			wp_enqueue_style( 'wpmessagebutton-admin', WPMESSAGEBUTTON_PLUGIN_URI . 'admin/css/wpmessagebutton-admin.css', array(), '1.0', 'all' );
 			
 			// Load jQuery UI
@@ -65,9 +69,7 @@ class WPMessageButton_Admin {
 			$vars['input_time_invalid']	= __( 'Please enter a valid time, between 00:00 and 23:59', 'wp-message-button' );
 			wp_localize_script( 'wpmessagebutton-admin', 'wpmb_admin', $vars );
 			
-			if( isset( $_GET['tab'] ) && $_GET['tab'] == 'customizer' ){
-				WPMessageButton_Widget::enqueue();
-			}
+			WPMessageButton_Widget::enqueue();
 		
 		}
 	}

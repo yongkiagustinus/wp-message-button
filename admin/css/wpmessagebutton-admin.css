@@ -73,6 +73,7 @@
 	color: #fff;
 	font-size: 16px;
 	letter-spacing: 0.2px;
+	border-radius: 4px;
 }
 
 .wpmessagebutton-ads p {
@@ -83,6 +84,59 @@
 	margin: 0;
 	font-weight: bold;
 	font-size: 20px;
+}
+
+.wpmessagebutton-ads__list {
+	margin: 40px 0;
+}
+
+.wpmessagebutton-ads__list li {
+	position: relative;
+	padding-left: 55px;
+	margin-bottom: 30px;
+}
+
+.wpmessagebutton-ads__list li span {
+	position: absolute;
+	left: 5px;
+	width: 40px;
+	height: 40px;
+	top: 50%;
+	margin-top: -20px;
+	font-size: 32px;
+	line-height: 40px;
+}
+
+.wpmessagebutton-ads__cta {
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.wpmessagebutton-ads__cta span {
+	display: block;
+	text-align: center;
+	border-top: 1px solid #fff;
+	margin-top: 20px;
+	padding-top: 10px;
+	font-size: 18px;
+}
+
+.wpmessagebutton-ads__cta>a {
+	font-size: 28px;
+	display: block;
+	background: #2ecc71;
+	color: #fff;
+	text-decoration: none;
+	padding: 20px 0;
+	margin-top: 30px;
+	border-radius: 4px;
+	transition: all 0.5s;
+	line-height: 1.2em;
+}
+
+.wpmessagebutton-ads__cta>a:hover {
+	background: #27ae60;
 }
 
 /* Field */
@@ -112,6 +166,14 @@
 	border: 1px solid #dc3232 !important;
 	box-shadow: none;
 	background: #f2dede;
+}
+
+.wpmb-disabled {
+	opacity: 0.3;
+}
+
+.wpmb-form .noth>th {
+	display: none;
 }
 
 /* Custom radio field */
@@ -186,6 +248,10 @@
 .wpmb-field-timerange input[type="text"]:focus {
 	outline: none;
 	box-shadow: none;
+}
+
+.wpmb-tab-customizer table.form-table {
+	max-width: 600px;
 }
 
 /* Grid */

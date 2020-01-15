@@ -4,7 +4,7 @@
  * Plugin URI: https://88digital.co/plugins/wp-message-button/
  * Description: Display a chat button that link to popular messenger platform such as WhatsApp, Facebook Messenger, Telegram and Line. Customize the button and box design color, layout, positioning and show / hide in any page or post you like.
  * Version: 0.1.0
- * Author: smplWP
+ * Author: 88digital
  * Author URI: https://88digital.co
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
@@ -32,8 +32,10 @@ if ( ! defined( 'ABSPATH' ) ) { die( 'Forbidden' ); }
 
 define( 'WPMESSAGEBUTTON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPMESSAGEBUTTON_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
+define( 'WPMESSAGEBUTTON_GET_PRO_URI', 'https://88digital.co/plugins/wp-message-button/#pro' );
 
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton.php' );
+require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-settings.php' );
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-widget.php' );
 
 add_action( 'init', array( 'WPMessageButton', 'init' ) );
@@ -45,7 +47,6 @@ register_uninstall_hook( __FILE__, array( 'WPMessageButton', 'plugin_uninstall' 
 // Init in admin
 if( is_admin() ){
 	require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-admin.php' );
-	require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-settings.php' );
 	add_action( 'init', array( 'WPMessageButton_Admin', 'init' ) );
 	add_action( 'admin_init', array( 'WPMessageButton_Settings', 'init' ) );
 }
