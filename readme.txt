@@ -1,10 +1,11 @@
 === WP Message Button ===
-Tags: button,chat,message,whatsapp,messenger,line,telegram
+Contributors: yongkiagustinus
+Tags: button, chat, message, whatsapp, messenger, line, telegram, social, support 
 Donate link: https://yongki.id/treat/
 Requires at least: 4.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.0
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,9 +75,13 @@ You can get support by going to Support section of this plugin page
 Yes, we don't store any personal information and not using cookies
 
 == Screenshots ==
-1. The screenshot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
-2. The screenshot description corresponds to screenshot-2.(png|jpg|jpeg|gif).
-3. The screenshot description corresponds to screenshot-3.(png|jpg|jpeg|gif).
+1. Easy to add & edit agent information
+2. Customize text, color and behaviour of the widget
+3. Show beautiful message button & message box in your website
+4. Connect to selected platform directly
+
+== Upgrade Notice ==
+Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
 = 1.0 =
