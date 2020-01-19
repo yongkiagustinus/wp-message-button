@@ -24,6 +24,7 @@ When your customer clicked an agent from their mobile phone, it will open the se
 
 = HOW TO SETUP & HOW TO USE =
 We keep it simple with this plugin
+
 1. Activate the WP Message Button plugin
 1. Insert your name and contact information in the settings page
 1. Done, your customer can contact you directly.
@@ -46,6 +47,7 @@ We keep it simple with this plugin
 
 = WP MESSAGE BUTTON PRO =
 WP Message Button Pro gives you even more features & functionality. If you want to display more agents, add agent availability schedule or need any of these premium features:
+
 * Add more than 1 agent
 * Agent availability time settings
 * Dark mode theme for the message button & box
