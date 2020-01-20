@@ -5,7 +5,7 @@ Donate link: https://yongki.id/treat/
 Requires at least: 4.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: trunk
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,7 +87,14 @@ Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
 = 1.0.1 =
+
+Release date: January 20th, 2020
+
 * Set default color of the message icon
 * Update link to demo site
+
 = 1.0 =
+
+Release date: January 19th, 2020
+
 * Initial release.
