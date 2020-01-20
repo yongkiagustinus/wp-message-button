@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) { die( 'Forbidden' ); }
 
 define( 'WPMESSAGEBUTTON_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPMESSAGEBUTTON_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
-define( 'WPMESSAGEBUTTON_GET_PRO_URI', 'https://88digital.co/stuff/plugins/wp-message-button/#pro' );
+define( 'WPMESSAGEBUTTON_GET_PRO_URI', 'https://88digital.co/stuff/item/wp-message-button/#pro' );
 
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton.php' );
 require_once( WPMESSAGEBUTTON_PLUGIN_DIR . 'includes/class.wpmessagebutton-settings.php' );

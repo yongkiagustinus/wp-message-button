@@ -322,9 +322,9 @@ class WPMessageButton_Settings {
 							<li><span class="dashicons dashicons-sos"></span> <?php echo __( 'Direct & priority support for 6 months', 'wp-message-button' ); ?></li>
 						</ul>
 						<div class="wpmessagebutton-ads__cta">
-							<div><?php echo __( 'FOR ONLY $15', 'wp-message-button' ); ?></div>
+							<div><?php echo __( 'FOR ONLY $9', 'wp-message-button' ); ?></div>
 							<span><?php echo __( 'One time payment', 'wp-message-button' ); ?></span>
-							<a href="<?php echo WPMESSAGEBUTTON_GET_PRO_URI; ?>"><?php echo __( 'GET THE PRO VERSION!', 'wp-message-button' ); ?></a>
+							<a target="_blank" href="<?php echo WPMESSAGEBUTTON_GET_PRO_URI; ?>"><?php echo __( 'GET THE PRO VERSION!', 'wp-message-button' ); ?></a>
 						</div>
 					</div>
 				<?php } ?>

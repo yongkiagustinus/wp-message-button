@@ -86,5 +86,8 @@ Yes, we don't store any personal information and not using cookies
 Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
+= 1.0.1 =
+* Set default color of the message icon
+* Update link to demo site
 = 1.0 =
 * Initial release.
