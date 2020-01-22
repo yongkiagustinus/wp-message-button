@@ -103,17 +103,14 @@ class WPMessageButton_Settings {
 
 							<?php if( WPMessageButton::is_wpmb_pro_active() ){ ?>
 								<div class="wpmb-field">
-									<label for="agent-availability-schedule"><?php echo __( 'Availability Schedule (Leave all blank to hide the availability status)', 'wp-message-button' ); ?></label>
+									<label for="agent-availability-schedule"><?php echo __( 'Availability Schedule (Leave blank to set agent as available all day)', 'wp-message-button' ); ?></label>
 									<div class="wpmb-row">
 										<?php $days = array( 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ); ?>
 										<?php foreach( $days as $day ){ ?>
 											<div class="wpmb-col-3">
 												<div class="wpmb-field">
 													<label for="agent-availability-<?php echo $day; ?>-<?php echo $i; ?>"><?php echo __( ucfirst( $day ), 'wp-message-button' ); ?></label>
-													<div class="wpmb-field-timerange wp-clearfix">
-														<input type="text" id="agent-availability-<?php echo $day; ?>-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][availability][<?php echo $day; ?>][start]" placeholder="<?php echo esc_attr( 'hh:mm' ); ?>" value="<?php echo $agent == 'first' ? '' : $agent['availability'][$day]['start']; ?>" minlength="5" maxlength="5" data-rule-time="true">
-														<input type="text" id="agent-availability-<?php echo $day; ?>-end-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][availability][<?php echo $day; ?>][end]" placeholder="<?php echo esc_attr( 'hh:mm' ); ?>" value="<?php echo $agent == 'first' ? '' : $agent['availability'][$day]['end']; ?>" minlength="5" maxlength="5" data-rule-time="true">
-													</div>
+													<input id="agent-availability-<?php echo $day; ?>-<?php echo $i; ?>" name="wpmessagebutton_agents[<?php echo $i; ?>][<?php echo $day; ?>]" value="<?php echo $agent == 'first' ? '' : $agent[$day]; ?>" type="text" class="wpmb-schedule-input" placeholder="Example: 09:00-17:00" data-rule-timerange="true" />
 												</div>
 											</div>
 										<?php } ?>

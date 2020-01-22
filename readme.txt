@@ -1,11 +1,11 @@
 === WP Message Button ===
 Contributors: yongkiagustinus
 Tags: button, chat, message, whatsapp, messenger, line, telegram, social, support 
-Donate link: https://yongki.id/treat/
+Donate link: https://paypal.me/88digital
 Requires at least: 4.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,13 @@ Yes, we don't store any personal information and not using cookies
 Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
+= 1.0.2 =
+
+Release date: January 22th, 2020
+
+* Fix issue in add photo
+* Add more field validation
+
 = 1.0.1 =
 
 Release date: January 20th, 2020

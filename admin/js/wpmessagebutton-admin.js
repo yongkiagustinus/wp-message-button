@@ -10,7 +10,7 @@
 
 	// WP media uploader
 	var mediaUploader;
-	$('.wpmb-add-agent-photo').click(function (e) {
+	$(document).on('click', '.wpmb-add-agent-photo', function (e) {
 		e.preventDefault();
 		var imgPreview = $(this).siblings('img');
 		var imgInput = $(this).siblings('input');
@@ -56,6 +56,10 @@
 	// Add time validation method to jQuery.validate
 	$.validator.addMethod("time", function (value, element) {
 		return this.optional(element) || /^([01]\d|2[0-3]|[0-9])(:[0-5]\d){1,2}$/.test(value);
+	}, wpmb_admin.input_time_invalid);
+
+	$.validator.addMethod("timerange", function (value, element) {
+		return this.optional(element) || /^(2[0-3]|1[0-9]|0[0-9]):([0-5][0-9])-(2[0-3]|1[0-9]|0[0-9]):([0-5][0-9]){1,2}$/.test(value);
 	}, wpmb_admin.input_time_invalid);
 
 	// Init form validation
