@@ -48,6 +48,8 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	max-height: 60vh;
+	background: #fff;
+	border-radius: 8px;
 }
 
 .wpmessagebutton_chat__footer {
@@ -226,7 +228,9 @@
 .wpmessagebutton_button__close svg {
 	display: inline-block;
 	width: 50%;
+	height: auto;
 	vertical-align: middle;
+	fill: #fff;
 }
 
 /* Opened style */

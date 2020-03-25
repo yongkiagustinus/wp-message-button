@@ -116,7 +116,7 @@ class WPMessageButton_Settings {
 										<?php } ?>
 									</div>
 									<p class="description"><?php echo __( 'Please insert time in 24 hour format H:i, for example 09:00 to 17:00', 'wp-message-button' ); ?></p>
-									<p class="description"><?php echo sprintf( __( 'Current active timezone is GMT %s, go to %s to change the timezone', 'wp-message-button' ), get_option( 'gmt_offset' ), '<a target="_blank" href="' . admin_url( 'options-general.php' ) . '">' . __( 'Settings > General', 'wp-message-button' ) . '</a>' ); ?></p>
+									<p class="description"><?php echo sprintf( __( 'Current active timezone is UTC %s, go to %s to change the timezone', 'wp-message-button' ), get_option( 'gmt_offset' ), '<a target="_blank" href="' . admin_url( 'options-general.php' ) . '">' . __( 'Settings > General', 'wp-message-button' ) . '</a>' ); ?></p>
 								</div>
 							<?php } ?>
 
@@ -314,13 +314,9 @@ class WPMessageButton_Settings {
 							<li><span class="dashicons dashicons-info"></span> <?php echo __( 'Auto open message box after ... seconds', 'wp-message-button' ); ?></li>
 							<li><span class="dashicons dashicons-format-audio"></span> <?php echo __( 'Catch attention with notification sound', 'wp-message-button' ); ?></li>
 							<li><span class="dashicons dashicons-admin-customizer"></span> <?php echo __( 'More customization options', 'wp-message-button' ); ?></li>
-							<li><span class="dashicons dashicons-update"></span> <?php echo __( 'FREE lifetime upgrade for the PRO version', 'wp-message-button' ); ?></li>
-							<li><span class="dashicons dashicons-admin-multisite"></span> <?php echo __( 'Use PRO version on unlimited sites', 'wp-message-button' ); ?></li>
-							<li><span class="dashicons dashicons-sos"></span> <?php echo __( 'Direct & priority support for 6 months', 'wp-message-button' ); ?></li>
 						</ul>
 						<div class="wpmessagebutton-ads__cta">
-							<div><?php echo __( 'FOR ONLY $9', 'wp-message-button' ); ?></div>
-							<span><?php echo __( 'One time payment', 'wp-message-button' ); ?></span>
+							<div><?php echo __( 'FREE!', 'wp-message-button' ); ?></div>
 							<a target="_blank" href="<?php echo WPMESSAGEBUTTON_GET_PRO_URI; ?>"><?php echo __( 'GET THE PRO VERSION!', 'wp-message-button' ); ?></a>
 						</div>
 					</div>

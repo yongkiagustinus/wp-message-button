@@ -217,6 +217,30 @@
 	top: 0;
 }
 
+/* Radio Icons */
+.wpmb-radio.wpmb-radio--icon {
+	width: 50px; 
+	height: 50px;
+	display: inline-block;
+}
+.wpmb-radio.wpmb-radio--icon label svg {
+	max-width: 30px;
+	height: 30px;
+	color: #000;
+	fill: #000;
+}
+
+.wpmb-radio.wpmb-radio--icon input[type="radio"]:checked+label svg,
+.wpmb-radio.wpmb-radio--icon input[type="radio"]:checked+label svg * {
+	color: #fff;
+	fill: #fff;
+}
+
+.wpmb-radio.wpmb-radio--icon>label:hover:before,
+.wpmb-radio.wpmb-radio--icon input[type="radio"]:checked+label:before {
+	display: none;
+}
+
 /* Range fields */
 .wpmb-field-timerange {
 	position: relative;

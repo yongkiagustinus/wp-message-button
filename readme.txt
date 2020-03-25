@@ -5,14 +5,14 @@ Donate link: https://paypal.me/88digital
 Requires at least: 4.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Display a chat button that link to popular messenger platform such as WhatsApp, Facebook Messenger, Telegram and Line. Customize the button and box design color, layout, positioning and show / hide in any page or post you like.
 
 == Description ==
-Check our presentation & demo page [here](https://88digital.co/stuff/plugins/wp-message-button/)
+Get WP Message Button PRO for FREE [here](https://88digital.co/stuff/plugins/wp-message-button/)
 WP Message Button allows your customers to contact you directly from the button and message box displayed on your website. 
 
 With WP Message Button you can add a direct link to multiple popular messaging channels such as WhatsApp, Facebook Messenger, Telegram, Line, Skype, and even a direct phone call.
@@ -52,12 +52,9 @@ WP Message Button Pro gives you even more features & functionality. If you want 
 * Agent availability time settings
 * Dark mode theme for the message button & box
 * Catch attention with a notification sound
-* More customization options such as header background pattern, change button icon, change the notification sound
-* FREE lifetime upgrade of the PRO version
-* Use PRO version on unlimited sites
-* Direct & priority support for 6 months
+* More customization options such as change button icon, change the notification sound and dark mode
 
-Get [WP Message Button Pro](https://88digital.co/stuff/plugins/wp-message-button/#pro)
+Get [WP Message Button Pro](https://88digital.co/stuff/plugins/wp-message-button/#pro) for FREE
 
 = DEVELOPED BY =
 [88digital](https://88digital.co/)
@@ -66,8 +63,8 @@ Get [WP Message Button Pro](https://88digital.co/stuff/plugins/wp-message-button
 * Whatsapp, Messenger, Line & Telegram indicator icon by [Pixel Perfect](https://www.flaticon.com/authors/pixel-perfect)
 
 == Installation ==
-1. Upload \"wp-message-button\" folder to the \"/wp-content/plugins/\" directory.
-1. Activate the plugin through the \"Plugins\" menu in WordPress.
+1. Upload "wp-message-button" folder to the "/wp-content/plugins/" directory.
+1. Activate the plugin through the "Plugins" menu in WordPress.
 
 == Frequently Asked Questions ==
 = How do i get support? =
@@ -86,6 +83,17 @@ Yes, we don't store any personal information and not using cookies
 Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
+
+= 1.0.4 =
+Update pro version link & abnner
+
+= 1.0.3 = 
+
+Release date: January 22th, 2020
+Sorry for frequent updates, we are fixing a lot of small bug
+
+* Add hooks & filter for PRO version integration
+
 = 1.0.2 =
 
 Release date: January 22th, 2020
