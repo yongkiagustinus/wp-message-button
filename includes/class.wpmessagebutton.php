@@ -11,7 +11,15 @@ class WPMessageButton {
 
 	private static function init_hooks() {
 		self::$initiated = true;
+		self::load_textdomain();
 		WPMessageButton_Widget::init();
+	}
+
+	/**
+	 * Load plugin text domain
+	 */
+	public static function load_textdomain(){
+		load_plugin_textdomain( 'wpmessagebutton', false, basename( WPMESSAGEBUTTON_PLUGIN_DIR ) . '/languages' );
 	}
 
 	/**

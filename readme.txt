@@ -3,9 +3,9 @@ Contributors: yongkiagustinus
 Tags: button, chat, message, whatsapp, messenger, line, telegram, social, support 
 Donate link: https://paypal.me/88digital
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,11 @@ Yes, we don't store any personal information and not using cookies
 Keep your plugin up to date to get the latest features & the best performance
 
 == Changelog ==
+
+= 1.0.5 =
+
+Release date: April 1st, 2020
+* WordPress 5.4 test
 
 = 1.0.4 =
 Update pro version link & abnner
