@@ -15,7 +15,7 @@ class WPMessageButton_Widget {
 	public static function html(){ ?>
 		<?php do_action( 'wpmessagebutton_before_render' ); ?>
 		<?php $agents = get_option( 'wpmessagebutton_agents' ); ?>
-		<?php if( $agents && $agent[0] != 'first' ){ ?>
+		<?php if( $agents && $agents[0] != 'first' ){ ?>
 			<?php
 			$agents 			= WPMessageButton::is_wpmb_pro_active() ? $agents : array_slice( $agents, 0, 1 );
 			$customizer		= get_option( 'wpmessagebutton_customizer', WPMessageButton_Settings::customizer_default() );
@@ -75,14 +75,15 @@ class WPMessageButton_Widget {
 		wp_enqueue_style( 'wpmessagebutton' );
 		wp_enqueue_script( 'wpmessagebutton' );
 		
-		$customizer	= get_option( 'wpmessagebutton_customizer' );
+		$customizer				= get_option( 'wpmessagebutton_customizer' );
+		$header_bg_solid		= isset( $customizer['header_bg_solid'] ) ? $customizer['header_bg_solid'] : 0;
 
 		// Dynamic CSS for customizer settings
 		ob_start(); ?>
 			.wpmessagebutton{font-size:14px;}
 			.wpmessagebutton_chat__header {
 				background: <?php echo $customizer['header_bg'][0]; ?>;  /* fallback for old browsers */
-				<?php if( $customizer['header_bg_solid'] == 0 ){ ?>
+				<?php if( $header_bg_solid == 0 ){ ?>
 					background: -webkit-linear-gradient(to right, <?php echo $customizer['header_bg'][0] ?>, <?php echo $customizer['header_bg'][1]; ?>);  /* Chrome 10-25, Safari 5.1-6 */
 					background: linear-gradient(to right, <?php echo $customizer['header_bg'][0] ?>, <?php echo $customizer['header_bg'][1]; ?>); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 				<?php } ?>

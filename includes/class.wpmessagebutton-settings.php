@@ -135,8 +135,10 @@ class WPMessageButton_Settings {
 	public static function field_customizer(){
 		$customizer 			= get_option( 'wpmessagebutton_customizer', self::customizer_default() );
 		$default_color			= WPMessageButton_Widget::default_color();
+		$keep_open				= isset( $customizer['keep_open'] ) ? $customizer['keep_open'] : 0;
 		$header_bg_default 	= $customizer['mode'] == 'light' ? $default_color['header_bg']['light'] : $default_color['header_bg']['dark'];
 		$icon_bg_default 		= $customizer['mode'] == 'light' ? $default_color['icon_bg']['light'] : $default_color['icon_bg']['dark'];
+		$header_bg_solid		= isset( $customizer['header_bg_solid'] ) ? $customizer['header_bg_solid'] : 0;
 		?>
 
 		<div class="wpmb-field">
@@ -179,7 +181,7 @@ class WPMessageButton_Settings {
 		</div>
 
 		<div class="wpmb-field">
-			<label><input type="checkbox" name="wpmessagebutton_customizer[header_bg_solid]" value="1" <?php checked( 1, $customizer['header_bg_solid'] ); ?> /> <?php echo __( 'Disable header background gradient', 'wp-message-button' ); ?></label>
+			<label><input type="checkbox" name="wpmessagebutton_customizer[header_bg_solid]" value="1" <?php checked( 1, $header_bg_solid ); ?> /> <?php echo __( 'Disable header background gradient', 'wp-message-button' ); ?></label>
 			<p class="description"><?php echo __( 'Enable this to use solid background color for header', 'wp-message-button' ); ?></p>
 		</div>
 
@@ -201,7 +203,7 @@ class WPMessageButton_Settings {
 		</div>
 
 		<div class="wpmb-field">
-			<label><input type="checkbox" name="wpmessagebutton_customizer[keep_open]" value="1" <?php checked( 1, $customizer['keep_open'] ); ?> /> <?php echo __( 'Keep the message box open when user click outside the box', 'wp-message-button' ); ?></label>
+			<label><input type="checkbox" name="wpmessagebutton_customizer[keep_open]" value="1" <?php checked( 1, $keep_open ); ?> /> <?php echo __( 'Keep the message box open when user click outside the box', 'wp-message-button' ); ?></label>
 		</div>
 
 		<?php do_action( 'wpmessagebutton_after_customizer', $customizer ); ?>
