@@ -38,6 +38,7 @@
 }
 
 #agents .agent__photo img {
+	max-width: 100%;
 	display: inline-block;
 	border-radius: 100%;
 }
